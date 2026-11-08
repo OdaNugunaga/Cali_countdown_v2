@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cali Countdown</title>
+    
+    <!-- Icon for home screen -->
+    <link rel="apple-touch-icon" href="https://fav.farm/😻">
+    <link rel="icon" href="https://fav.farm/😻">
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: monospace;
+            padding: 20px;
+            font-size: 16px;
+        }
+        .yellow { color: #e5c07b; }
+        .red { color: #ff6b6b; }
+        input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #e5c07b;
+            color: #e5c07b;
+            font-family: monospace;
+            font-size: 16px;
+            width: 80px;
+            outline: none;
+        }
+        button {
+            background: #222;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 8px 15px;
+            font-family: monospace;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <p>What day is it today? (1-31)</p>
+    <input type="number" id="today" placeholder="15">
+
+    <p>What month is it? (oct, nov, dec)</p>
+    <input type="text" id="month" placeholder="oct">
+
+    <br>
+    <button onclick="countdown()">Calculate!</button>
+
+    <div id="result"></div>
+
+    <script>
+        function countdown() {
+            const oct = 31;
+            const nov = 30;
+            const dec = 4;
+
+            let today = parseInt(document.getElementById('today').value);
+            let month = document.getElementById('month').value.toLowerCase().trim();
+            let days = 0;
+
+            if (month === "oct") {
+                days = oct - today + nov + dec;
+            } else if (month === "nov") {
+                days = nov - today + dec;
+            } else if (month === "dec") {
+                days = dec - today;
+            }
+
+            let output = document.getElementById('result');
+
+            if (days >= 31) {
+                output.innerHTML = `<span class="red">${days}</span> days until Cali comes here 😿.`;
+            } else if (days >= 20 && days < 31) {
+                output.innerHTML = `<span class="red">${days}</span> days until Cali comes here 😺.`;
+            } else if (days >= 10 && days < 20) {
+                output.innerHTML = `<span class="red">${days}</span> days until Cali comes here 😸.`;
+            } else if (days < 10 && days > 5) {
+                output.innerHTML = `<span class="red">${days}</span> days until Cali comes here 😻.`;
+            } else {
+                output.innerHTML = `<span class="red">SHE IS ON HER WAYYYYYY!!!!!!!!!</span> 😻`;
+            }
+        }
+    </script>
+
+</body>
+</html>
